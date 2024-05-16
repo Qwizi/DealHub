@@ -58,4 +58,6 @@ fi
 
 sort -u -t '=' -k 1,1 DealHub/.env DealHub/.env.example | sed '/^$/d' >DealHub/.env.temp && mv DealHub/.env.temp DealHub/.env
 
+bash DealHub/upgrade.sh
+
 echo -e "\nCongratulations! Your DealHub instance is ready to use.\n"
