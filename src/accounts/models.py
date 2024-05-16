@@ -1,9 +1,9 @@
 import random
 
-from allauth.account.signals import user_signed_up
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.db import models
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
@@ -34,9 +34,7 @@ class Account(AbstractUser, PermissionsMixin):
         self.save()
 
 
-
-@receiver(user_signed_up)
-def user_signed_up_(request, user, **kwargs):
-    # Your code here. For example:
-    print(f"User {user.username} signed up")
-    user.get_random_avatar()
+@receiver(post_save, sender=Account)
+def post_save_account(sender, instance, created, **kwargs):
+    if created:
+        instance.get_random_avatar()
