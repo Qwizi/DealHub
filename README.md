@@ -1,6 +1,6 @@
 # DealHub
 
-DealHub is a a web application that allow users to post deals and discounts on products and services.
+DealHub is a a web application that allow users to post deals on products and services.
 
 ## Getting Started
 
