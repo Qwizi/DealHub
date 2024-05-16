@@ -6,12 +6,12 @@ DealHub is a a web application that allow users to post deals on products and se
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
-
-- Python 3.8+
-- Django 3.2+
-- django-allauth
-
-### Installation
-
-1. Clone the repository
+## Installing
+- ### Linux
+```bash
+curl -fsSL https://raw.githubusercontent.com/Qwizi/DealHub/master/scripts/install.sh | bash
+```
+- ### Windows (Powershell)
+```powershell
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/Qwizi/DealHub/master/scripts/install.ps1"))
+```

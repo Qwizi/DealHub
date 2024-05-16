@@ -4,6 +4,15 @@ on:
     push:
         branches:
             - master
+        paths-ignore:
+            - 'scripts/**'
+            - 'nginx/**'
+            - '.github/**'
+            - 'docker-compose.prod.yml'
+            - 'docker-compose.yml'
+            - README.md
+            - .env.example
+            - .gitignore
 
 jobs:
     release:
