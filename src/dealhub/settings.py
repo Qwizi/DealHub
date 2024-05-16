@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'allauth',
     'allauth.account',
 ]
@@ -133,3 +134,33 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+AUTH_USER_MODEL = "accounts.Account"
+LOGIN_REDIRECT_URL = "/"
+
+DICE_BEAR_STYLE = os.environ.get("DICE_BEAR_STYLE", "fun-emoji")
+
+DICE_BEAR_SEEDS = {
+    "fun-emoji": [
+        "Buster",
+        "Daisy",
+        "Garfield",
+        "Willow",
+        "Whiskers",
+        "Ginger",
+        "Bailey",
+        "Midnight",
+        "Kiki",
+        "Milo",
+        "Mimi",
+        "Lucy",
+        "Shadow",
+        "Snowball",
+        "Bella",
+        "Mittens",
+        "Felix",
+        "Rascal",
+        "Miss kitty",
+        "Sasha"
+    ]
+}
