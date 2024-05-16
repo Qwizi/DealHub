@@ -17,7 +17,7 @@ echo "Superusers count: $SUPERUSER_COUNT"
 if [ "$SUPERUSER_COUNT" = "0" ]; then
   echo "Creating superuser"
     # Create superuser
-  docker compose exec -T app python manage.py shell -c 'from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(username=\"admin\", password=\"admin\", email=None)'
+  docker compose exec -T app python manage.py shell -c 'from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(username="admin", password="admin", email=None)'
   echo "Superuser admin with password admin created"
 fi
 

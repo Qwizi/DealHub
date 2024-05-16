@@ -1,0 +1,50 @@
+services:
+  app:
+    image: qwizii/dealhub:latest
+    container_name: dealhub_app_prod
+    command: sh -c "gunicorn dealhub.wsgi:application --bind 0.0.0.0:8000"
+    expose:
+      - "8000"
+    volumes:
+      - static_volume:/app/staticfiles/
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - dealhub-network
+    tty: true
+  db:
+    image: postgres:15.1
+    container_name: dealhub_db_prod
+    env_file:
+        - .env
+    restart: unless-stopped
+    expose:
+      - 5435
+    healthcheck:
+      test: "exit 0"
+    networks:
+      - dealhub-network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  nginx:
+    image: nginx:stable-alpine3.17-slim
+    container_name: dealhub_nginx_prod
+    ports:
+      - 8000:80
+    volumes:
+      - static_volume:/app/staticfiles/
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - dealhub-network
+
+networks:
+  dealhub-network:
+
+volumes:
+  static_volume:
+  pgdata:
