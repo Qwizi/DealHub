@@ -1,0 +1,29 @@
+name: Create Release
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    release:
+        name: Create Release
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Check out the repo
+                uses: actions/checkout@v4.1.1
+            -   name: Extract version from pyproject.toml
+                id: extract_metadata
+                run: |
+                        VERSION=$(awk -F ' = ' '/version =/ {gsub(/"/, "", $2); print $2}' ./pyproject.toml)
+                        LABELS="version=$VERSION,latest"
+                        echo "::set-output name=version::$VERSION"
+                        echo "::set-output name=labels::$LABELS"
+                shell: /usr/bin/bash -e {0}
+            -   name: Release New Version
+                uses: softprops/action-gh-release@v1
+                with:
+                        name: v${{ steps.extract_metadata.outputs.version }}
+                        tag_name: v${{ steps.extract_metadata.outputs.version }}
+                        token: ${{ secrets.RELEASE_GIT_TOKEN }}

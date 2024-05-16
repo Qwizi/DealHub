@@ -1,9 +1,8 @@
 name: Publish Backend Docker image
 
 on:
-    push:
-        branches:
-            - master
+  release:
+    types: [published]
 
 
 jobs:

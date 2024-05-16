@@ -39,7 +39,7 @@ mkdir -p DealHub/
 
 echo "Downloading required files from CDN..."
 curl -fsSL $CDN/docker-compose.prod.yml -o DealHub/docker-compose.yml
-curl -fsSL $CDN/env.example -o DealHub/.env.example
+curl -fsSL $CDN/.env.example -o DealHub/.env.example
 curl -fsSL $CDN/nginx/default.conf -o DealHub/default.conf
 curl -fsSL $CDN/scripts/upgrade.sh -o DealHub/upgrade.sh
 
