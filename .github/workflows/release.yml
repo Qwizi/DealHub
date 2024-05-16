@@ -22,6 +22,8 @@ jobs:
         steps:
             -   name: Check out the repo
                 uses: actions/checkout@v4.1.1
+                with:
+                    token: ${{ secrets.RELEASE_GIT_TOKEN }}
             -   name: "Install Poetry"
                 run: "pipx install poetry"
             -   name: "Set up Python 3.11"

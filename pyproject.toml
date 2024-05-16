@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "dealhub"
 version = "0.0.1"
-description = "DealHub is a a web application that allow users to post deals on products and services."
+description = "DealHub is a a web application that allow users to post deals on products and services.."
 authors = ["Adrian Ciolek <ciolek.adrian@protonmail.com>"]
 readme = "README.md"
 
