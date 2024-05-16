@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+        context: ./
+        dockerfile: Dockerfile
+    container_name: dealhub_app
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src//:/app/
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - dealhub-network
+  db:
+    image: postgres:15.1
+    container_name: dealhub_db
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - "5436:5432"
+    healthcheck:
+      test: "exit 0"
+    networks:
+      - dealhub-network
+
+networks:
+  dealhub-network:
