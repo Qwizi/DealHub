@@ -1,8 +1,7 @@
 {% extends "layout/base.html" %}
 {% load i18n %}
 {% block body %}
-    {% for message in messages %}
-        <div class="alert alert-info">{{ message }}</div>{% endfor %}
+    
     <div class="card w-min-full bg-base-100 shadow-xl mt-10">
         <div class="card-body">
             <div role="tablist" class="tabs tabs-bordered" hx-boost="true">
@@ -11,11 +10,6 @@
                 <a role="tab" class="tab"
                    href="{% url 'account_change_password' %}">{% trans "Change Password" %}</a>
             </div>
-            {% if messages %}
-                <div class="pt-4">
-
-                </div>
-            {% endif %}
             {% block content %}{% endblock %}
         </div>
     </div>
