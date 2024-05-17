@@ -6,9 +6,6 @@ VERSION="0.0.2"
 CDN="https://raw.githubusercontent.com/Qwizi/DealHub/master"
 PROJECT_NAME="DealHub"
 
-echo -e "Welcome to $PROJECT_NAME updater!"
-
-echo "Downloading required files from CDN..."
 curl -fsSL $CDN/docker-compose.prod.yml -o $PROJECT_NAME/docker-compose.yml
 curl -fsSL $CDN/.env.example -o $PROJECT_NAME/.env.example
 curl -fsSL $CDN/nginx/default.conf -o $PROJECT_NAME/default.conf

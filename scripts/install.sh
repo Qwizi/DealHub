@@ -13,7 +13,7 @@ PROJECT_NAME="DealHub"
 echo -e "Welcome to $PROJECT_NAME installer!"
 
 # Making project directory
-mkdir -p $PROJECT_NAME/
+mkdir -p $PROJECT_NAME
 
 echo "Downloading required files from CDN..."
 curl -fsSL $CDN/docker-compose.prod.yml -o $PROJECT_NAME/docker-compose.yml
