@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>DealHub</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container mx-auto">
@@ -15,8 +18,8 @@
     {% endblock body %}
     {% block extra_body %}
     {% endblock extra_body %}
-    {% include "layout/footer.html" %}
-</div>
 
+</div>
+{% include "layout/footer.html" %}
 </body>
 </html>

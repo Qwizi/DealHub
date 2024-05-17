@@ -11,6 +11,7 @@ django = "^5.0.6"
 psycopg = {extras = ["binary"], version = "^3.1.19"}
 django-allauth = "^0.63.0"
 gunicorn = "^22.0.0"
+django-htmx = "^1.17.3"
 
 
 [build-system]

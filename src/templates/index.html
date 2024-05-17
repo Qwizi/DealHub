@@ -1,6 +1,28 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-    <h1>Home</h1>
-    <p>Welcome to the home page!</p>
+    <div class="hero min-h-fit bg-base-100 pb-10 shadow-2xl mt-10 m-4">
+        <div class="min-w-full hero-content text-center flex flex-col ">
+            <div>
+                <h1 class="text-5xl font-bold">Kategorie</h1>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-1 min-w-full">
+                {% for i in "01234567" %}
+                    {% include "categories/button.html" %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="hero min-h-full bg-base-100 pb-10 shadow-2xl m-4">
+        <div class="min-w-full hero-content text-center flex flex-col">
+            <div>
+                <h1 class="text-5xl font-bold">Ostatnie Ogloszenia</h1>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 min-w-full">
+               {% for i in "01234567" %}
+                    {% include "offers/card.html" %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
