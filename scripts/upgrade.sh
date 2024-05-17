@@ -26,6 +26,8 @@ if [ "$SUPERUSER_COUNT" = "0" ]; then
     SUPERUSER_PASSWORD=$(openssl rand -hex 16)
     $DOCKER_COMPOSE_CMD exec -T app python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(username='admin', password='$SUPERUSER_PASSWORD', email=None);"
     echo "Superuser admin created with password $SUPERUSER_PASSWORD"
+    echo "Go to http://localhost:8000/admin/password_change/ and login with the superuser to change the password"
 fi
 
 echo "$PROJECT_NAME has been updated!"
+echo "$PROJECT_NAME is running at http://localhost:8000/"
