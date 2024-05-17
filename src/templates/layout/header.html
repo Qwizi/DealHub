@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="navbar bg-base-100 shadow-xl ">
     <div class="navbar-start" hx-boost="true">
         <div class="dropdown">
@@ -29,16 +31,17 @@
         </div>
     </div>
     <div class="navbar-end gap-2" hx-boost="true">
-        <div class="form-control" x-data="{ theme: $persist(document.querySelector('html').classList.contains('dark') ? 'dark' : 'light') }">
+        <div class="form-control"
+             x-data="{ theme: $persist(document.querySelector('html').classList.contains('dark') ? 'dark' : 'light') }">
             <label class="flex cursor-pointer gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
                 <input type="checkbox" value="light" class="toggle theme-controller"
-                  x-bind:checked="theme === 'dark'"
-               x-on:change="theme = $event.target.checked ? 'dark' : 'light'; $nextTick(() => document.querySelector('html').classList = theme)"/
-                
+                       x-bind:checked="theme === 'dark'"
+                       x-on:change="theme = $event.target.checked ? 'dark' : 'light'; $nextTick(() => document.querySelector('html').classList = theme)"/
+
                 />
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -60,13 +63,11 @@
                 <ul tabindex="0"
                     class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                     <li>
-                        <a class="justify-between">
-                            Profile
-                            <span class="badge">New</span>
+                        <a href="{% url "profile" %} "class="justify-between">
+                            Profil
                         </a>
                     </li>
-                    <li><a>Settings</a></li>
-                    <li><a href="{% url "account_logout" %}">Logout</a></li>
+                    <li><a href="{% url "account_logout" %}">Wyloguj sie</a></li>
                 </ul>
             </div>
         {% else %}
