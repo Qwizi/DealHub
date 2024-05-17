@@ -12,6 +12,9 @@ PROJECT_NAME="DealHub"
 
 echo -e "Welcome to $PROJECT_NAME installer!"
 
+# Making project directory
+mkdir -p $PROJECT_NAME
+
 # List of files to download
 files=("docker-compose.prod.yml" ".env.example" "nginx/default.conf" "scripts/upgrade.sh")
 
