@@ -6,58 +6,35 @@ set -e # Exit immediately if a command exits with a non-zero status
 #set -u # Treat unset variables as an error and exit
 set -o pipefail # Cause a pipeline to return the status of the last command that exited with a non-zero status
 
-VERSION="0.0.1"
+VERSION="0.0.2"
 CDN="https://raw.githubusercontent.com/Qwizi/DealHub/master"
-OS_TYPE=$(grep -w "ID" /etc/os-release | cut -d "=" -f 2 | tr -d '"')
+PROJECT_NAME="DealHub"
 
-# Check if the OS is manjaro, if so, change it to arch
-if [ "$OS_TYPE" = "manjaro" ]; then
-    OS_TYPE="arch"
-fi
+echo -e "Welcome to $PROJECT_NAME installer!"
 
-if [ "$OS_TYPE" = "arch" ]; then
-    OS_VERSION="rolling"
-else
-    OS_VERSION=$(grep -w "VERSION_ID" /etc/os-release | cut -d "=" -f 2 | tr -d '"')
-fi
+# List of files to download
+files=("docker-compose.prod.yml" ".env.example" "nginx/default.conf" "scripts/upgrade.sh")
 
-# Install xargs on Amazon Linux 2023 - lol
-if [ "$OS_TYPE" = 'amzn' ]; then
-    dnf install -y findutils >/dev/null 2>&1
-fi
+# Download required files
+for file in "${files[@]}"
+do
+  curl -fsSL $CDN/"$file" -o $PROJECT_NAME/"$file"
+done
 
-echo -e "-------------"
-echo -e "Welcome to DealHub installer!"
-echo -e "This script will install everything for you."
-echo -e "-------------"
-
-echo "OS: $OS_TYPE $OS_VERSION"
-
-echo -e "Creating directories..."
-
-mkdir -p DealHub/
-
-echo "Downloading required files from CDN..."
-curl -fsSL $CDN/docker-compose.prod.yml -o DealHub/docker-compose.yml
-curl -fsSL $CDN/.env.example -o DealHub/.env.example
-curl -fsSL $CDN/nginx/default.conf -o DealHub/default.conf
-curl -fsSL $CDN/scripts/upgrade.sh -o DealHub/upgrade.sh
-
-chmod +x DealHub/upgrade.sh
 
 # Copy .env.example if .env does not exist
-if [ ! -f DealHub/.env ]; then
-    cp DealHub/.env.example DealHub/.env
+if [ ! -f $PROJECT_NAME/.env ]; then
+    cp $PROJECT_NAME/.env.example $PROJECT_NAME/.env
 
     DJANGO_SECRET_KEY=$(openssl rand -hex 50)
-    sed -i "s|SECRET_KEY=.*|SECRET_KEY=$DJANGO_SECRET_KEY|g" DealHub/.env
+    sed -i "s|SECRET_KEY=.*|SECRET_KEY=$DJANGO_SECRET_KEY|g" $PROJECT_NAME/.env
 
     # Update DEBUG to False
-    sed -i "s|DEBUG=.*|DEBUG=False|g" DealHub/.env
+    sed -i "s|DEBUG=.*|DEBUG=False|g" $PROJECT_NAME/.env
 fi
 
-sort -u -t '=' -k 1,1 DealHub/.env DealHub/.env.example | sed '/^$/d' >DealHub/.env.temp && mv DealHub/.env.temp DealHub/.env
+sort -u -t '=' -k 1,1 $PROJECT_NAME/.env $PROJECT_NAME/.env.example | sed '/^$/d' >$PROJECT_NAME/.env.temp && mv $PROJECT_NAME/.env.temp $PROJECT_NAME/.env
 
-bash DealHub/upgrade.sh
+bash $PROJECT_NAME/upgrade.sh
 
-echo -e "\nCongratulations! Your DealHub instance is ready to use.\n"
+echo -e "\nCongratulations! Your $PROJECT_NAME instance is ready to use.\n"
