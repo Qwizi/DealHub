@@ -9,12 +9,46 @@ purposes.
 
 ### Prerequisites
 
-- Python 3.11 or higher
+- Python 3.10 or higher
 - Poetry
 - Git
 - Docker
 
 ### Installation
+
+#### With pip
+
+1. **Clone the repository**: This will create a copy of this project on your local machine.
+
+    ```shell
+    git clone https://github.com/Qwizi/DealHub
+    ```
+
+3. **Install dependencies**: Navigate into the cloned project's directory and install the necessary dependencies.
+
+    ```shell
+   cd DealHub
+   python -m venv venv
+    ```
+
+4. **Activate the virtual environment**: This step ensures that the hooks are installed and
+   active.
+
+    ```shell
+    venv/Scripts/Activate
+    ```
+5. **Install dependencies**
+   ```shell
+   pip install -r .\requirements.txt
+   ```
+5. **Run the application**: This will start the application on your local machine.
+
+    ```shell
+    ./scripts/run.ps1
+    ```
+
+
+#### With poetry
 
 1. **Install Poetry**: [Poetry](https://python-poetry.org/docs/#installation) is a tool for dependency management and
    packaging in Python. You can use [pipx](https://pipx.pypa.io/stable/installation/) to install it globally, which is
