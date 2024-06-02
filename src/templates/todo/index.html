@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %} {% block content %}
+
+<h1>Todos</h1>
+
+<ul>
+  {% for todo in todos %}
+  <li>{{ todo.title }}</li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}

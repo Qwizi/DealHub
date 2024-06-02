@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -23,20 +24,27 @@ from django.views.generic import TemplateView
 
 from .views import index
 
-urlpatterns = (
-        [
-            path('admin/', admin.site.urls),
-            path("", index, name="index"),
-            path('accounts/', include('allauth.urls')),
-            path("accounts/profile/", TemplateView.as_view(template_name="allauth/profile.html"), name="profile"),
-            path("i18n/", include("django.conf.urls.i18n")),
-        ]
-        + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-)
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", index, name="index"),
+    path("accounts/", include("allauth.urls")),
+    path(
+        "accounts/profile/",
+        TemplateView.as_view(template_name="allauth/profile.html"),
+        name="profile",
+    ),
+    path("i18n/", include("django.conf.urls.i18n")),
+    path("todos/", include("todo.urls")),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += i18n_patterns(
     path("", index, name="index"),
-    path('accounts/', include('allauth.urls')),
-    path("accounts/profile/", TemplateView.as_view(template_name="allauth/profile.html"), name="profile"),
+    path("accounts/", include("allauth.urls")),
+    path(
+        "accounts/profile/",
+        TemplateView.as_view(template_name="allauth/profile.html"),
+        name="profile",
+    ),
     path("i18n/", include("django.conf.urls.i18n")),
+    path("todos/", include("todo.urls")),
 )
