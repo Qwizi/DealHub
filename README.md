@@ -41,7 +41,13 @@ purposes.
    ```shell
    pip install -r .\requirements.txt
    ```
-5. **Run the application**: This will start the application on your local machine.
+
+6. **Copy .env.example to .env**
+    ```shell
+    mv .env.example .env
+    ```
+7. **Start docker desktop app**
+8. **Run the application**: This will start the application on your local machine.
 
     ```shell
     ./scripts/run.ps1
