@@ -14,7 +14,7 @@ Write-Host "Superusers count: $SUPERUSER_COUNT"
 if ($SUPERUSER_COUNT -eq "0") {
   Write-Host "Creating superuser"
   # Create superuser
-  docker compose exec -T app python manage.py shell -c 'from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(username="admin", password="admin", email=None)'
+  docker compose exec -T app python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(username='admin', password='admin', email=None)"  
   Write-Host "Superuser admin with password admin created"
 }
 
