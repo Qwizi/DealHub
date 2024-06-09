@@ -1,0 +1,14 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<h1>Offers</h1>
+<ul>
+    {%for offer in offers%}
+    <li>{{offer.title}}</li>
+    <li>{{offer.author.username}}</li>
+    <li>{{offer.images}}</li>
+    <li>{{offer.price}}</li>
+    {%endfor%}
+</ul>
+
+{%endblock content%}
