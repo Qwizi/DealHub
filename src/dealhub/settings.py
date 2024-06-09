@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'django_htmx',
-    'offers'
+    'offers',
+    'categories'
 ]
 
 MIDDLEWARE = [
