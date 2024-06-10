@@ -1,0 +1,28 @@
+{% extends "layout/base.html" %}
+{% load daisyui_filters %}
+{% block content %}
+<div class="p-6 space-y-6">
+        <div class="card shadow-lg compact bg-base-200 mt-4" hx-boost="true">
+            <div class="card-body">
+                <h2 class="card-title">Dodaj nową ofertę</h2>
+                <form class="form" method="POST" hx-swap="innerHTML">
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {{ form|crispy }}
+                    <div class="form-control mt-6">
+                        <input type="submit" value="Wyslij" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

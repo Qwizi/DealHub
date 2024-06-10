@@ -1,6 +1,7 @@
 from django.urls import path
-from offers.views import offer_index
+from offers.views import offer_index, OfferListView, CreateOfferView
 
 urlpatterns = [
-    path("", offer_index, name="offer-index")
+    path("", OfferListView.as_view(), name="offers_list"),
+    path("create/", CreateOfferView.as_view(), name="create_offer")
 ]
