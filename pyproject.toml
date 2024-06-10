@@ -13,6 +13,7 @@ django-allauth = "^0.63.0"
 gunicorn = "^22.0.0"
 django-htmx = "^1.17.3"
 crispy-daisyui = "^0.2.0"
+requests = "^2.32.3"
 
 
 [build-system]
