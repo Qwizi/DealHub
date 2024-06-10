@@ -7,9 +7,11 @@
                 <h1 class="text-5xl font-bold">Kategorie</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-1 min-w-full">
-                {%for category in categories%}
-                <button class="btn btn-block">{{category.name}}</button>
-                {%endfor%}
+
+                {% for category in categories %}
+                    <a href="{% url "offers_list" %}?category={{ category.id }}"
+                       class="btn btn-primary text-white">{{ category.name }}</a>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -19,7 +21,7 @@
                 <h1 class="text-5xl font-bold">Ostatnie Ogloszenia</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 min-w-full">
-               {% for i in "01234567" %}
+                {% for i in "01234567" %}
                     {% include "offers/card.html" %}
                 {% endfor %}
             </div>

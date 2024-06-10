@@ -1,38 +1,44 @@
 {% extends "layout/base.html" %}
 {% block content %}
-<div class="flex flex-col w-full lg:flex-row mt-10">
-    <div class="grid flex-grow place-items-center">
-        <div class="card w-96 bg-base-100 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">Kategorie</h2>
-          {%for category in categories%}
-          <div class="flex flex-col">
-            <button class="btn btn-primary">{{category.name}}</button>
-          </div>
-          {%endfor%}
-        </div>
+
+    <div class="hero min-h-fit bg-base-100 pb-10 shadow-2xl mt-10 m-4" hx-boost="true">
+        <div class="items-stretch min-w-full hero-content flex flex-col ">
+            <div>
+                <h1 class="text-2xl font-bold">Oferty</h1>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+                <div class="col-span-1 md:col-span-1">
+
+                    <ul class="menu bg-base-200 rounded-box">
+                        <li>
+                            <h2 class="menu-title text-white">Kategorie</h2>
+                            <ul>
+                                {% for category in categories %}
+                                    <li>
+                                        <a href="{% url "offers_list" %}?category={{ category.id }}"
+                                           class={% if request.GET.category == category.id|stringformat:"s" %} "active" {% endif %}>{{ category.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="col-span-1 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 w-full ">
+                    <div class="flex justify-end col-span-3">
+                        <a href="{% url "create_offer" %}" class="btn btn-primary mb-4 text-white">Dodaj oferte</a>
+                    </div>
+                    {% for offer in offers %}
+                        <div class="col-span-1">
+                            {% include "offers/card.html" with offer=offer %}
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
         </div>
     </div>
-</div> 
-<div class="grid flex-grow place-items-center">
-    <div class="card bg-base-100 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">Oferty</h2>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 min-w-full">
-            {%for offer in offers%}
-            {%include "offers/card.html" with offer=offer%}
-            {%endfor%}
-         </div>
-        </div>
-    </div>
-</div>
 
-</div>
-<button class="btn btn-primary">DODAJ OFERTE</button>
-    
-
-
-
-
-
-{%endblock content%}
+{% endblock content %}

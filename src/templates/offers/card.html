@@ -1,12 +1,12 @@
-<div class="card w-90 bg-base-100 shadow-xl">
+<div class="card w-46 bg-base-200 shadow-xl">
     <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
                  alt="Shoes"/></figure>
     <div class="card-body">
         <h2 class="card-title">{{offer.title}}</h2>
         <p>{{offer.description}}</p>
-        <p>{{offer.price}}</p>
         <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+             <div class="badge badge-primary text-white">{{ offer.category.name }}</div>
+            <div class="badge badge-accent text-white">{{ offer.price }} zł</div>
         </div>
     </div>
 </div>

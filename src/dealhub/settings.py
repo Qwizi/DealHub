@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'django_htmx',
+    'crispy_forms',
+    "crispy_daisyui",
     'offers',
     'categories'
 ]
@@ -168,3 +170,7 @@ DICE_BEAR_SEEDS = {
         "Sasha"
     ]
 }
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "daisyui"
+
+CRISPY_TEMPLATE_PACK = "daisyui"
