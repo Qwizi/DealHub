@@ -37,7 +37,7 @@ services:
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
         restart: unless-stopped
         expose:
-            - 5435
+            - 5432
         networks:
             - dealhub-network
         volumes:
