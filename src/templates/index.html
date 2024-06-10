@@ -10,7 +10,7 @@
 
                 {% for category in categories %}
                     <a href="{% url "offers_list" %}?category={{ category.id }}"
-                       class="btn btn-primary text-white">{{ category.name }}</a>
+                       class="btn btn-primary text-white" hx-boost="true">{{ category.name }}</a>
                 {% endfor %}
             </div>
         </div>
@@ -21,8 +21,8 @@
                 <h1 class="text-5xl font-bold">Ostatnie Ogloszenia</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 min-w-full">
-                {% for i in "01234567" %}
-                    {% include "offers/card.html" %}
+                {% for offer in offers %}
+                    {% include "offers/card.html" with offer=offer %}
                 {% endfor %}
             </div>
         </div>
