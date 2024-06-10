@@ -41,7 +41,7 @@ services:
         networks:
             - dealhub-network
         volumes:
-            - pgdata:/var/lib/postgresql/data
+            - dealhub_pgdata:/var/lib/postgresql/data
         healthcheck:
             test: [ "CMD-SHELL", "pg_isready -U postgres" ]
             interval: 30s
@@ -85,4 +85,4 @@ networks:
 
 volumes:
     static_volume:
-    pgdata:
+    dealhub_pgdata:
