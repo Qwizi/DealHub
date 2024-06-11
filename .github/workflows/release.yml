@@ -37,7 +37,7 @@ jobs:
             -   name: Update qwizii/sharkservers image version
                 run: |
                     sed -i "s/qwizii\/dealhub:.*$/qwizii\/dealhub:v$(poetry version -s)/" docker-compose.prod.yml
-                    sed -i "s/qwizii\/dealhub:.*$/qwizii\/dealhub:v$(poetry version -s)/" coolify/docker-compose.prod.yml
+                    sed -i "s/qwizii\/dealhub:.*$/qwizii\/dealhub:v$(poetry version -s)/" coolify/docker-compose.yml
             -   name: Commit and push changes
                 run: |
                         git config --global user.email "github@actions.com"
