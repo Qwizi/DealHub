@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 CSRF_TRUSTED_ORIGINS = os.environ.get(
-    "CSRF_TRUSTED_ORIGINS", "http://localhost:8000"
+    "CSRF_TRUSTED_ORIGINS", "https://dealhub.qwizi.ovh,https://*.qwizi.ovh"
 ).split(",")
 
 ALLOWED_HOSTS = ["*"]
