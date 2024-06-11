@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
@@ -31,7 +32,7 @@ class OfferListView(ListView):
         return context
 
 
-class CreateOfferView(CreateView):
+class CreateOfferView(LoginRequiredMixin, CreateView):
     model = Offer
     form_class = CreateOfferForm
     template_name = "offers/create_offer.html"
