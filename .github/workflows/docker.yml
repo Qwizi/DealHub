@@ -1,8 +1,8 @@
 name: Publish Backend Docker image
 
 on:
-  release:
-    types: [published]
+    release:
+        types: [ published ]
 
 
 jobs:
@@ -40,3 +40,12 @@ jobs:
                 uses: Ilshidur/action-discord@master
                 with:
                     args: '${{ github.repository }} successfully built and pushed Docker image.'
+            -   name: Send deploy Webhook
+                run: |
+                    curl --request GET --url '${{secrets.COOLIFY_WEBHOOK}}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_API_KEY }}'
+            -   name: Discord notification
+                env:
+                    DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+                uses: Ilshidur/action-discord@master
+                with:
+                    args: '${{ github.repository }} successfully send deploy webhook.'
