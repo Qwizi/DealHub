@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
-
+from django.views.generic.detail import DetailView
 from categories.models import Category
 from offers.forms import CreateOfferForm
 from offers.models import Offer
@@ -41,3 +41,9 @@ class CreateOfferView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+class OfferDetailView(DetailView):
+    model = Offer
+    template_name = "offers/offer_detail.html"
+    context_object_name = "offer"
+   
