@@ -1,7 +1,7 @@
 <div class="card w-46 h-96 bg-base-200 shadow-xl">
     <figure><img src="{% if offer.get_images %}{{ offer.get_images.0 }}{% else %}https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg{% endif %}" alt="Shoes"/></figure>
     <div class="card-body">
-        <h2 class="card-title">{{offer.title}}</h2>
+        <h2 class="card-title"><a href="{%url 'offer_detail' pk=offer.pk %}">{{offer.title}}</a></h2>
         <p>{{offer.description}}</p>
         <div class="card-actions justify-end">
              <div class="badge badge-primary text-white">{{ offer.category.name }}</div>

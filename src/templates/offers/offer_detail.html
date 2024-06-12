@@ -1,0 +1,41 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+    <div class="carousel w-full">
+        {%for image in offer.get_images%}
+        <div id="item1" class="carousel-item w-full">
+          <img src="{{image}}" class="w-full" />
+        </div> 
+        {%endfor%}
+      </div> 
+      <div class="flex justify-center w-full py-2 gap-2">
+        <a href="#item1" class="btn btn-xs">1</a> 
+        <a href="#item2" class="btn btn-xs">2</a> 
+        <a href="#item3" class="btn btn-xs">3</a> 
+        <a href="#item4" class="btn btn-xs">4</a>
+      </div>
+    </div>
+    <div class="hero min-h-fit bg-base-100 pb-10 shadow-2xl mt-10 m-4" hx-boost="true">
+        <div class="items-stretch min-w-full hero-content flex flex-col ">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+                <div class="col-span-1 md:col-span-1"> 
+                    <div class="card w-46 h-96 bg-base-200 shadow-xl">
+                            <div class="card-body">
+                           {{offer.description}} 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-1 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 w-full ">
+                    <div class="card w-46 h-96 bg-base-200 shadow-xl">
+                        <div class="card-body">
+                            {{offer.title}} 
+                            {{offer.author.username}} 
+                            {{category.name}} 
+                            {{offer.price}}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
