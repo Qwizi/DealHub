@@ -4,9 +4,19 @@ from django.db import models
 
 class Offer(models.Model):
     title = models.CharField(max_length=200)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="accounts", null=True,
-                               blank=True)
-    category = models.ForeignKey("categories.Category", on_delete=models.CASCADE, related_name="offers", null=True)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="accounts",
+        null=True,
+        blank=True,
+    )
+    category = models.ForeignKey(
+        "categories.Category",
+        on_delete=models.CASCADE,
+        related_name="offers",
+        null=True,
+    )
     images = models.TextField()
     description = models.TextField(default="ESZ")
     price = models.FloatField(default=50)
@@ -17,5 +27,11 @@ class Offer(models.Model):
         return self.title
 
     def get_images(self):
-        return self.images.split('\n')
+        return self.images.split("\n")
+    
+    def buy(self):
+        self.is_active = False
+        self.save()
+
+
 # Create your models here.
