@@ -1,6 +1,6 @@
 services:
   app:
-    image: qwizii/dealhub:v0.0.25
+    image: qwizii/dealhub:v0.0.26
     container_name: dealhub_app_prod
     command: sh -c "gunicorn dealhub.wsgi:application --bind 0.0.0.0:8000"
     expose:
