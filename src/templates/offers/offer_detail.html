@@ -55,7 +55,13 @@
     <p class="text-sm text-gray-500">By {{offer.author}}</p>
     <p class="text-xl font-bold">{{offer.price}} zł</p>
     <p>{{offer.description}}</p>
-    <button class="btn btn-primary mt-4">Kup teraz</button>
+    {%if user.is_authenticated %}
+      {% if offer.is_active %}
+      <button hx-post="{% url 'offer_buy' pk=offer.pk %}" class="btn btn-primary mt-4 text-white">Kup teraz</button>
+      {%else%}
+      <button class="btn btn-primary mt-4 text-white" disabled>Oferta nieaktywna</button>
+      {%endif %}
+    {%endif%}
   </div>
 </div>
 
@@ -136,7 +142,7 @@
                     <h2 class="card-title">Dodaj opinie</h2>
                     <form id="createPostForm" method="POST" hx-post="{% url 'offer_create_review' pk=offer.pk %}" hx-swap="innerHTML">
                        {{create_review_form|crispy}}
-                        <input type="submit" value="Submit" class="btn btn-primary">
+                        <input type="submit" value="Dodaj" class="btn btn-primary text-white">
                     </form>
                 </div>
   </div> 

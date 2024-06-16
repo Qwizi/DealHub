@@ -1,6 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views import View
+from django_htmx.http import HttpResponseLocation
+
 from django.views.generic import ListView, CreateView
 from django.views.generic.detail import DetailView
 from categories.models import Category
@@ -64,3 +67,12 @@ class OfferDetailView(DetailView):
         print(context)
         context["create_review_form"] = CreateReviewForm()
         return context
+
+
+class BuyOfferView(LoginRequiredMixin, View):
+    model = Offer
+
+    def post(self, request, pk):
+        offer = Offer.objects.get(pk=pk)
+        offer.buy()
+        return HttpResponseLocation(reverse_lazy("offer_detail", kwargs={"pk": pk}))

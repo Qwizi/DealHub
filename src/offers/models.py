@@ -28,6 +28,10 @@ class Offer(models.Model):
 
     def get_images(self):
         return self.images.split("\n")
+    
+    def buy(self):
+        self.is_active = False
+        self.save()
 
 
 # Create your models here.
