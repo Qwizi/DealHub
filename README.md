@@ -5,6 +5,13 @@
 
 DealHub is a a web application that allow users to post deals on products and services.
 
+Build with
+- Django
+- DaisyUI
+- HTMX
+- Postgres
+- Docker
+
 ## Live Demo
 [DealHub](https://dealhub.qwizi.ovh/)
 
@@ -118,3 +125,6 @@ purposes.
 ![image 1](https://i.imgur.com/hEeWnNu.png)
 ![image 2](https://i.imgur.com/kGsBR7j.png)
 ![image 3](https://i.imgur.com/tM1HFvB.png)
+
+## Legal info
+© Copyright by Adrian Ciołek (@Qwizi), Mateusz Cyran (@Kuis03), Kamil Duszyński (@VirdisPl), Dawid Dymek (@dawiddymek1108), Nikodem Decewicz (Szimurka).
