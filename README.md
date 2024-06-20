@@ -34,6 +34,16 @@ Build with
    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/Qwizi/DealHub/master/scripts/install.ps1"))
    ```
 
+## Wiki
+- ### Loading stock data
+  ```bash
+  cd DealHub
+  ./scripts/load_stock_data.sh
+  ```
+- ### Creating Categories
+   - Go to the admin panel http://localhost:8000/admin
+   - Login with the credentials you provided during the installation
+   - Go to the Categories section and create a new category
 
 ## Getting Started
 

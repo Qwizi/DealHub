@@ -46,6 +46,13 @@
                             Profil
                         </a>
                     </li>
+                     {% if user.is_superuser %}
+                         <li>
+                            <a href="{% url "admin:index" %} " class="justify-between" hx-boost="false" target="_blank">
+                                Panel Admina
+                            </a>
+                         </li>
+                        {% endif %}
                     <li><a href="{% url "account_logout" %}">Wyloguj sie</a></li>
                 </ul>
             </div>

@@ -14,9 +14,10 @@ curl -fsSL $CDN/scripts/upgrade.sh -o $PROJECT_NAME/upgrade.sh
 # Docker Compose command
 DOCKER_COMPOSE_CMD="docker compose --env-file $PROJECT_NAME/.env -f $PROJECT_NAME/docker-compose.yml"
 
-# Rebuild containers and run migrations
+# Rebuild containers, run migrations, and collect static files
 $DOCKER_COMPOSE_CMD up -d --pull always --remove-orphans --force-recreate
 $DOCKER_COMPOSE_CMD exec -T app python manage.py migrate
+$DOCKER_COMPOSE_CMD exec -T app python manage.py collectstatic --noinput
 
 # Get the count of superusers
 SUPERUSER_COUNT=$($DOCKER_COMPOSE_CMD exec -T app python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); print(User.objects.filter(is_superuser=True).count());")
