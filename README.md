@@ -1,6 +1,32 @@
 # DealHub
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django)
+[![Create Release](https://github.com/Qwizi/DealHub/actions/workflows/release.yml/badge.svg)](https://github.com/Qwizi/DealHub/actions/workflows/release.yml)
+[![Publish Backend Docker image](https://github.com/Qwizi/DealHub/actions/workflows/docker.yml/badge.svg)](https://github.com/Qwizi/DealHub/actions/workflows/docker.yml)
 
 DealHub is a a web application that allow users to post deals on products and services.
+
+## Live Demo
+[DealHub](https://dealhub.qwizi.ovh/)
+
+## Installation
+
+- ### Linux
+   #### Prerequisites
+  - Docker
+  - Curl
+
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/Qwizi/DealHub/master/scripts/install.sh | bash
+   ```
+
+- ### Windows (Powershell)
+   #### Prerequisites
+   - Docker Desktop
+
+   ```powershell
+   Invoke-Expression ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/Qwizi/DealHub/master/scripts/install.ps1"))
+   ```
+
 
 ## Getting Started
 
@@ -88,20 +114,7 @@ purposes.
     ```shell
     ./scripts/run.sh
     ```
-
-## Installation
-
-- ### Linux
-   ### Prerequisites
-  - Docker
-  - Curl
-
-   ```bash
-   curl -fsSL https://raw.githubusercontent.com/Qwizi/DealHub/master/scripts/install.sh | bash
-   ```
-
-- ### Windows (Powershell)
-
-```powershell
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/Qwizi/DealHub/master/scripts/install.ps1"))
-```
+### ShowCase
+![image 1](https://i.imgur.com/hEeWnNu.png)
+![image 2](https://i.imgur.com/kGsBR7j.png)
+![image 3](https://i.imgur.com/tM1HFvB.png)
