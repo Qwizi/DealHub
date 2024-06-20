@@ -38,7 +38,7 @@ Build with
 - ### Loading stock data
   ```bash
   cd DealHub
-  ./scripts/load_stock_data.sh
+  ./scripts/stock_data.sh
   ```
 - ### Creating Categories
    - Go to the admin panel http://localhost:8000/admin
