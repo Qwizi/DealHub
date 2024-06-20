@@ -4,13 +4,13 @@
     <div class="hero min-h-fit bg-base-100 pb-10 shadow-2xl mt-10 m-4">
         <div class="min-w-full hero-content text-center flex flex-col ">
             <div>
-                <h1 class="text-5xl font-bold">Kategorie</h1>
+                <h1 class="text-3xl md:text-4xl font-bold">Kategorie</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-1 min-w-full">
 
                 {% for category in categories %}
                     <a href="{% url "offers_list" %}?category={{ category.id }}"
-                       class="btn btn-primary text-white" hx-boost="true">{{ category.name }}</a>
+                       class="btn btn-primary text-white btn-block" hx-boost="true">{{ category.name }}</a>
                 {% endfor %}
             </div>
         </div>
@@ -18,7 +18,7 @@
     <div class="hero min-h-full bg-base-100 pb-10 shadow-2xl m-4">
         <div class="min-w-full hero-content text-center flex flex-col">
             <div>
-                <h1 class="text-5xl font-bold">Ostatnie Ogloszenia</h1>
+                <h1 class="text-3xl md:text-4xl font-bold">Ostatnie Ogłoszenia</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 min-w-full">
                 {% for offer in offers %}
